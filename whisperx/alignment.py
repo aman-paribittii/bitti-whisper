@@ -40,7 +40,7 @@ DEFAULT_ALIGN_MODELS_HF = {
     "ru": "jonatasgrosman/wav2vec2-large-xlsr-53-russian",
     "pl": "jonatasgrosman/wav2vec2-large-xlsr-53-polish",
     "hu": "jonatasgrosman/wav2vec2-large-xlsr-53-hungarian",
-    "fi": "jonatasgrosman/wav2vec2-large-xlsr-53-finnish",
+    "fi": "Finnish-NLP/wav2vec2-xlsr-1b-finnish-lm-v2",
     "sv": "KBLab/wav2vec2-large-voxrex-swedish",
     "fa": "jonatasgrosman/wav2vec2-large-xlsr-53-persian",
     "el": "jonatasgrosman/wav2vec2-large-xlsr-53-greek",
