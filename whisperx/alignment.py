@@ -59,6 +59,10 @@ DEFAULT_ALIGN_MODELS_HF = {
     "sk": "comodoro/wav2vec2-xls-r-300m-sk-cv8",
     "sl": "anton-l/wav2vec2-large-xlsr-53-slovenian",
     "hr": "classla/wav2vec2-xls-r-parlaspeech-hr",
+    "ro": "gigant/romanian-wav2vec2",
+    "eu": "stefan-it/wav2vec2-large-xlsr-53-basque",
+    "gl": "ifrz/wav2vec2-large-xlsr-galician",
+    "ka": "xsway/wav2vec2-large-xlsr-georgian",
 }
 
 
@@ -241,12 +245,6 @@ def align(
                 blank_id = code
 
         trellis = get_trellis(emission, tokens, blank_id)
-
-        if trellis is None:
-            print("trellis error, resorting to original")
-            aligned_segments.append(aligned_seg)
-            continue
-
         path = backtrack(trellis, emission, tokens, blank_id)
 
         if path is None:
@@ -366,11 +364,6 @@ source: https://pytorch.org/tutorials/intermediate/forced_alignment_with_torchau
 def get_trellis(emission, tokens, blank_id=0):
     num_frame = emission.size(0)
     num_tokens = len(tokens)
-
-    max_token = max(tokens)
-    if max_token >= emission.size(1):
-        print("get_trellis error")
-        return None
 
     # Trellis has extra diemsions for both time axis and tokens.
     # The extra dim for tokens represents <SoS> (start-of-sentence)
